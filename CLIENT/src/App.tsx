@@ -1,11 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Hero from './Pages/Hero';
+import Login from './Pages/Login';
 
 function App() {
   return (
-    <div className='font-serif bg-red-600 underline text-blue-300'>
-      <button>App</button>
-    </div>
-  )
+    <Router>
+      <div className="bg-gray-900 text-white min-h-screen">
+        <Routes>
+          <Route exact path="/" element={<Hero />} />
+          <Route exact path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
