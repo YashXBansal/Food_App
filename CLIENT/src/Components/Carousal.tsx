@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi'; // Import the search icon from react-icons
 
 const Carousel: React.FC = () => {
-  // Array of food item image URLs
   const foodItemImages = [
     'https://imgmedia.lbb.in/media/2019/06/5d00d22c7d22ab29a877f01b_1560334892622.jpg',
     'https://static.toiimg.com/thumb/width-600,height-400,msid-59108535.cms',
@@ -11,14 +10,6 @@ const Carousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredImages, setFilteredImages] = useState<string[]>(foodItemImages);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      goToNextSlide();
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [activeIndex]);
 
   const goToPrevSlide = () => {
     setActiveIndex((prevIndex) => (prevIndex === 0 ? foodItemImages.length - 1 : prevIndex - 1));
@@ -33,10 +24,16 @@ const Carousel: React.FC = () => {
   };
 
   useEffect(() => {
+    const interval = setInterval(goToNextSlide, 5000);
+  
+    return () => clearInterval(interval);
+  }, []); // Only runs once on component mount
+
+  useEffect(() => {
     setFilteredImages(
       foodItemImages.filter((imageUrl) => imageUrl.toLowerCase().includes(searchQuery.toLowerCase()))
     );
-  }, [searchQuery, foodItemImages]);
+  }, [searchQuery]); // Only update when searchQuery changes
 
   return (
     <div className="relative w-full bg-gray-200 rounded-lg overflow-hidden">
