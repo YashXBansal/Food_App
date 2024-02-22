@@ -39,6 +39,7 @@ const Navbar: React.FC = () => {
             <Link to="/menu" onClick={closeDrawer} className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Menu</Link>
             <Link to="/cart" onClick={closeDrawer} className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Cart</Link>
             <Link to="/login" onClick={closeDrawer} className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Login</Link>
+            <Link to="/signup" onClick={closeDrawer} className="px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">SignUp</Link>
           </div>
           <div className="flex sm:hidden">
             <button
@@ -73,6 +74,7 @@ const Navbar: React.FC = () => {
               <Link to="/menu" onClick={closeDrawer} className="px-4 py-2 text-sm text-white hover:bg-gray-700">Menu</Link>
               <Link to="/cart" onClick={closeDrawer} className="px-4 py-2 text-sm text-white hover:bg-gray-700">Cart</Link>
               <Link to="/login" onClick={closeDrawer} className="px-4 py-2 text-sm text-white hover:bg-gray-700">Login</Link>
+              <Link to="/signup" onClick={closeDrawer} className="px-4 py-2 text-sm text-white hover:bg-gray-700">SignUp</Link>
             </div>
           </div>
         </div>
