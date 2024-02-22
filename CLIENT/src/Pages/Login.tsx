@@ -28,7 +28,7 @@ const Login = () => {
         },
         body: JSON.stringify(formData)
       });
-
+      const json = await response.json();
       if (response.ok) {
         console.log("User logged in successfully");
         // Reset form fields after successful submission
@@ -36,10 +36,12 @@ const Login = () => {
           email: '',
           password: '',
         });
+        // Store token in local storage
+        localStorage.setItem("authToken", json.token);
+        // Navigate to the home page
         setInterval(() =>{
           navigate('/')
-        }, 200)
-        
+        }, 500)
       } else {
         console.error("Error logging in");
         alert('Wrong credentials')
@@ -48,6 +50,7 @@ const Login = () => {
       console.error("Error logging in", error);
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">

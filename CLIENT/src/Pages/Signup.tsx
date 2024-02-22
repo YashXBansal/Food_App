@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 
 interface FormData {
   name: string;
@@ -9,6 +9,9 @@ interface FormData {
 }
 
 const Signup: React.FC = () => {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -35,7 +38,6 @@ const Signup: React.FC = () => {
         },
         body: JSON.stringify(formData)
       });
-
       if (response.ok) {
         console.log("User created successfully");
         // Reset form fields after successful submission
@@ -46,6 +48,9 @@ const Signup: React.FC = () => {
           password: '',
         });
         setAlert('User Created Successfully');
+        setInterval(() =>{
+          navigate('/')
+        }, 200)
       } else {
         const data = await response.json();
         if (response.status === 409 && data.error === "Email already exists") {
