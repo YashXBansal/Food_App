@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 const Footer = () => {
   return (
@@ -12,10 +14,10 @@ const Footer = () => {
           <div className="mb-4 md:mb-0">
             <h2 className="text-xl font-semibold mb-2">Quick Links</h2>
             <ul className="text-sm">
-              <li><a href="#" className="hover:text-gray-400">Home</a></li>
-              <li><a href="#" className="hover:text-gray-400">Menu</a></li>
-              <li><a href="#" className="hover:text-gray-400">About Us</a></li>
-              <li><a href="#" className="hover:text-gray-400">Contact</a></li>
+              <li><Link to="/" className="hover:text-gray-400">Home</Link></li>
+              <li><Link to="/menu" className="hover:text-gray-400">Menu</Link></li>
+              <li><Link to="/about" className="hover:text-gray-400">About Us</Link></li>
+              <li><Link to="/contact" className="hover:text-gray-400">Contact</Link></li>
             </ul>
           </div>
           <div>
@@ -34,3 +36,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
