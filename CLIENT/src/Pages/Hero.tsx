@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../Components/Navbar';
-import Footer from '../Components/Footer';
 import Carousel from '../Components/Carousel';
 import Card from '../Components/Card';
 
@@ -45,28 +43,30 @@ function Hero() {
 
   return (
     <div>
-      <Navbar />
       <Carousel />
-      <div className='container mx-auto p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-      {foodCat.map((category) => (
-  <div key={category._id}>
-    <div>{category.CategoryName}</div>
-    {foodItem
-      .filter((item) => item.CategoryName === category.CategoryName)
-      .map((filteredItem) => (
-        <div key={filteredItem._id}>
-          <Card
-            name={filteredItem.name}
-            description={filteredItem.description}
-            categoryName={filteredItem.CategoryName}
-            img={filteredItem.img}
-             />
+      <div className='container mx-auto p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        {foodCat.map((category) => (
+          <div key={category._id}>
+            <h2 className="text-xl font-semibold mb-4 text-center uppercase border-b-2 border-gray-300 pb-2">{category.CategoryName}</h2>
+            <div className="grid grid-cols-1 gap-4">
+              {foodItem
+                .filter((item) => item.CategoryName === category.CategoryName)
+                .map((filteredItem) => ( 
+                <div className='cols-12 col-md-6 col-lg-3'>
+                  <Card
+                    key={filteredItem._id}
+                    name={filteredItem.name}
+                    description={filteredItem.description}
+                    categoryName={filteredItem.CategoryName}
+                    img={filteredItem.img}
+                  />
+                </div>
+                ))}
             </div>
-           ))}
-        </div>
-      ))}
+          </div>
+        ))}
       </div>
-      <Footer />
+
     </div>
   );
 }
